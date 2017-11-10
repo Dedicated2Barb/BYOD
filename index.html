@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-<!--
-	<link rel="stylesheet" href="assets/css/reset.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/style.css">-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 <body>
-	
-	<!--user types in birth year.
+  
+  <!--user types in birth year.
 
-	screen flashes
+ submits after fourth number input
 
-	background runs through a slowly progressing gradient
+  background runs through a slowly progressing gradient
 
-	screen displays a list of 10 randomly selected songs from entered year, generated from spotify API.
+  screen displays a list of 10 randomly selected songs from entered year, generated from spotify API.
 
-	User can click on song to display on screen:
+  User can click on song to display on screen:
 
-	an embedded youtube video of song.
+  an embedded youtube video of song.
 
-	option to listen to 30 second demo.
+  option to listen to 30 second demo.
 
-	option to play song on spotify.
-
-
-	Match on action: youtube video switches to place of birth year.
-
-	Rounded border on youtube video.
-
-	-->
-
-	<div class="birth-container"></div>
-
-	<div>
-		<!--this div is a place holder for an iframe (?) element for youtube video. It is important to keep this div separate from the birth-container because that container will be an input form. When user inputs birth year to birth-container, it will HIDE. App will then SHOW iframe DIV. FURTHER CONSIDERATION: This div will probably be taken out of HTML doc and instead will create element in JS to push/append to doc.-->
-	</div>
+  option to play song on spotify.
 
 
+  Match on action: youtube video switches to place of birth year.
+
+  Rounded border on youtube video.
+
+  -->
+
+  <div id="gradient">
+
+  <div id="birth-container"><p>1988<p></div>
+
+  <div>
+    <!--this div is a place holder for an iframe (?) element for youtube video. It is important to keep this div separate from the birth-container because that container will be an input form. When user inputs birth year to birth-container, it will HIDE. App will then SHOW iframe DIV. FURTHER CONSIDERATION: This div will probably be taken out of HTML doc and instead will create element in JS to push/append to doc.-->
+  </div>
+
+
+</div>
 
 
 
 
 
 
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	
-	<script type="text/javascript" src=discoapp.js></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+  <script type="text/javascript" src=assets/javascript/app.js></script>
 
 </body>
 </html>
