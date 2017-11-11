@@ -1,3 +1,17 @@
+ //API for Spotify
+
+//$(document).on("click", "lastDigitInput", function(){
+//  var type = $(this).data("type");
+ // console.log("button type: " + type);
+ // var queryURL = "format=json http://www.spotify.com/ns/music/1q=" +year+ "&api_key=c01b3208712e4328baa0c3087c684529&limit=10";
+ // console.log("queryURL");
+ // $.ajax({
+ //   url: queryURL,method:"GET"
+//  }).done(function(response){
+ //   console.log("search track"); 
+
+
+
 //GLOBAL VARIABLES
 //======================================================
 //======================================================
@@ -7,7 +21,8 @@ var numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var userInput = [];
 //API KEY FOR YOUTUBE AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc
 
-
+var byod = [];
+//"B", "Y", "O", "D"
 //FUNCTIONS
 //======================================================
 //======================================================
@@ -22,24 +37,27 @@ var userInput = [];
 //======================================================
 
 
-$(document).on("keypress", function() {
+$(document).on("keypress", function(event) {
 
-  var number = $(this).val().length;
-    console.log(number);
+  var number = String.fromCharCode(event.keyCode).toLowerCase();
+    console.log("#: " + number);
 
-  for (var i = 0; i < numberArray[i]; i++) {
+  var bdayContainer = $("#bday-container");
+   // for (var i = 0; i < byod; i++) {
+     // byod[i] = number;
+    //  console.log("change: " + byod[i]);
+      //if (event.keyCode >= 48 && event.keyCode <= 57) {
+       // if (bdayContainer[0].innerText.length < 4)  {
+       // bdayContainer.append(number);
+       // }
 
-    if (numberArray[i] === number) {
-      userInput.join(numberArray[i]);
-    }
-    $("#bday-container").html(userInput);
-  }
-
+      
+ // }
 });
  
+byod.push("B", "Y", "O", "D");
 
-
-
+      $("#bday-container").html(byod);
 
 
 

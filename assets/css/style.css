@@ -12,11 +12,22 @@
   position: absolute;
 }
 
+header {
+  font-family: 'Nunito', sans-serif;
+  font-size: 40px;
+  color: #FFFFFF;
+  position: relative;
+  text-align: center;
+  padding-top: 100px;
+
+
+}
+
 #bday-container {
   font-family: 'Anton', sans-serif;
   font-size: 500px;
   color: #FFFFFF;
   position: relative;
   text-align: center;
-
+  margin: -80px;
 }
