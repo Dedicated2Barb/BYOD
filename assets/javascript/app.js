@@ -1,41 +1,52 @@
+//GLOBAL VARIABLES
+//======================================================
+//======================================================
+
 var numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-
-userInput = [];
+var userInput = [];
 //API KEY FOR YOUTUBE AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc
 
 
-//console.log(number);
+//FUNCTIONS
+//======================================================
+//======================================================
 
 
-//$(".birth-container").on("keypress", function(enteredNo) {
-//	if (enteredNo === number[i]) {
-//		console.log(number[i]);
-//	$(".birth-container").html(enteredNo);
 
-//}
-//});
+
+
+
+//MAIN PROCESSES
+//======================================================
+//======================================================
+
+
+$(document).on("keypress", function() {
+
+  var number = $(this).val().length;
+    console.log(number);
+
+  for (var i = 0; i < numberArray[i]; i++) {
+
+    if (numberArray[i] === number) {
+      userInput.join(numberArray[i]);
+    }
+    $("#bday-container").html(userInput);
+  }
+
+});
  
-function typeYear(number) {
-
-	var year = false;
-
-	for (i = 0; i < numberArray; i++){
-		if (numberArray[i] === number) {
-			console.log(number);
-			year = true;
-		}
-		userInput.push(number);
-	}
-	document.getElementById("birth-container").innerHTML = userInput;
-}
-
-document.onkeyup = function(event) {
-	typeYear();
-}
 
 
 
+
+
+
+
+//CODE TO BE DISSECTED/MADE ORIGINAL
+//======================================================
+//======================================================
 
 var colors = new Array(
   [62,35,255],
@@ -54,7 +65,7 @@ var step = 0;
 var colorIndices = [0,1,2,3];
 
 //transition speed
-var gradientSpeed = 0.002;
+var gradientSpeed = 0.005;
 
 function updateGradient()
 {
