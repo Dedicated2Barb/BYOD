@@ -12,6 +12,32 @@
 
 
 
+var search = $(this).attr("cats");
+var queryURL = "https://www.googleapis.com/youtube/v3/search?q=" + search + "&key=AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc";
+
+$.ajax({
+  url: queryURL,
+  method: "GET"
+}).done(function(response){
+    console.log(response);
+    var results = response.items;
+    console.log(results);
+
+    for (var i = 0; i < response.items; i++){
+      var ytDiv = $("<div class='ytVideos'>");
+      var ytVideos = $("<iframe>");
+
+      ytVideos.attr("src", results[i].id.url);
+
+      ytDiv.append(ytVideos);
+
+      $(".videos").prepend(ytDiv);
+    }
+    
+});
+
+
+
 //GLOBAL VARIABLES
 //======================================================
 //======================================================
