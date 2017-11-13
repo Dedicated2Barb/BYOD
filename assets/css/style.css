@@ -18,16 +18,40 @@ header {
   color: #FFFFFF;
   position: relative;
   text-align: center;
-  padding-top: 100px;
+  top: 600px;
 
+}
 
+.btn {
+  height: 80px;
+  width: 300px;
+  font-family: 'Anton', sans-serif;
+  font-size: 40px;
+  position: relative;
+  background-color: #FAFA43;
+  color: #FA4372;
+  top: 600px;
+  left: 40%;
+  border-radius: 20px;
 }
 
 #bday-container {
   font-family: 'Anton', sans-serif;
-  font-size: 500px;
+  font-size: 460px;
   color: #FFFFFF;
   position: relative;
   text-align: center;
-  margin: -80px;
+  line-height: 460px;
+
 }
+
+.table {
+  background-color: #FFFFFF;
+  height: 500px;
+  width: 800px;
+  position: relative;
+  left: 330px;
+  top: 80px;
+}
+
+
