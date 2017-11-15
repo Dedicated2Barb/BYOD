@@ -28,7 +28,7 @@ header {
   font-family: 'Anton', sans-serif;
   font-size: 40px;
   position: relative;
-  background-color: #FAFA43;
+  background-color: #FFFFFF;
   color: #FA4372;
   top: 600px;
   left: 40%;
@@ -37,7 +37,7 @@ header {
 
 #bday-container {
   font-family: 'Anton', sans-serif;
-  font-size: 460px;
+  font-size: 400px;
   color: #FFFFFF;
   position: relative;
   text-align: center;
@@ -45,13 +45,31 @@ header {
 
 }
 
-.table {
-  background-color: #FFFFFF;
-  height: 500px;
-  width: 800px;
-  position: relative;
-  left: 330px;
-  top: 80px;
+ .panel-primary {
+  background: rgba(255, 255, 255, 0.3);
+  margin: 50px;
+  border-style: none;
 }
+
+.panel-primary>.panel-heading {
+  font-family: 'Nunito', sans-serif;
+  font-size: 70px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: #FFFFFF;
+  text-align: center;
+
+
+}
+
+.panel-title {
+  font-size: 70px;
+}
+
+.panel-body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  color: #333;
+} 
 
 

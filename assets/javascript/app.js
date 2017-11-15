@@ -1,40 +1,4 @@
- //API for Spotify
 
-//$(document).on("click", "lastDigitInput", function(){
-//  var type = $(this).data("type");
- // console.log("button type: " + type);
- // var queryURL = "format=json http://www.spotify.com/ns/music/1q=" +year+ "&api_key=c01b3208712e4328baa0c3087c684529&limit=10";
- // console.log("queryURL");
- // $.ajax({
- //   url: queryURL,method:"GET"
-//  }).done(function(response){
- //   console.log("search track"); 
-
-
-
-var search = $(this).attr("cats");
-var queryURL = "https://www.googleapis.com/youtube/v3/search?q=" + search + "&key=AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc";
-
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).done(function(response){
-    console.log(response);
-    var results = response.items;
-    console.log(results);
-
-    for (var i = 0; i < response.items; i++){
-      var ytDiv = $("<div class='ytVideos'>");
-      var ytVideos = $("<iframe>");
-
-      ytVideos.attr("src", results[i].id.url);
-
-      ytDiv.append(ytVideos);
-
-      $(".videos").prepend(ytDiv);
-    }
-    
-});
 
 
 
@@ -46,11 +10,94 @@ $.ajax({
 
 var bdayContainer = $("#bday-container");
 
+
 //FUNCTIONS
 //======================================================
 //======================================================
 
+$("button").on("click", function(){
 
+  var year = bdayContainer.text();
+  console.log("year: " + year);
+
+  var queryURL = "http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=" + year + 
+    "&api_key=319dee413845315791220a4cdf2ea8db&format=json&limit=99";
+    console.log("queryURL", queryURL);
+
+  $.ajax({
+      url: queryURL,
+      method:"GET"
+    }).done(function(response){
+      console.log(response)
+
+      var trackResults = response.tracks.track;
+      var artists = {};
+      var counter = 0;
+
+      while (counter <= 10) {
+        var randNumber = Math.floor(Math.random() * trackResults.length);
+        console.log(randNumber)
+        var trackName = trackResults[randNumber].name;
+        console.log("test" + trackName)
+        var artistName = trackResults[randNumber].artist.name;
+
+        if (artists[artistName]) {
+          continue;
+        } else {
+          artists[artistName] = true;
+          counter++;
+
+          $("#trackTable > tbody").append("<tr><td>" 
+            + trackName + "</td><td>" + artistName + "</td></tr>");
+
+        }
+
+
+
+
+      }
+    //   console.log(trackResults);
+    //   for (i = 0; i < 11; i++) {
+
+
+    //   for (var i = 0; i < trackResults.length; i++){
+    //     var trackName = trackResults[i].name;
+    //     console.log("track " + trackName);
+
+    //     var trackArtist = trackResults[i].artist.name;
+    //       $("#trackTable > tbody").append("<tr><td>" 
+    //         + trackName + "</td><td>" + trackArtist + "</td></tr>");
+    //   }
+
+    // }
+  });
+
+});
+
+ // var search = $(this).attr("data-name");
+
+  //var queryURL = "https://www.googleapis.com/youtube/v3/search?q=" + search + "&key=AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc";
+
+  //$.ajax({
+   // url: queryURL,
+  //  method: "GET"
+  // }).done(function(response){
+  //     console.log(response);
+  //     var results = response.items;
+  //     console.log(results);
+
+  //     for (var i = 0; i < response.items; i++){
+  //       var ytDiv = $("<div class='ytVideos'>");
+  //       var ytVideos = $("<iframe>");
+
+  //       ytVideos.attr("src", results[i].id.url);
+
+  //       ytDiv.append(ytVideos);
+
+  //       $(".videos").prepend(ytDiv);
+  //     }
+      
+  // });
 
 
 
@@ -61,12 +108,12 @@ var bdayContainer = $("#bday-container");
 //======================================================
 
 $("button").hide();
-$(".table").hide();
+$(".container").hide();
 
 
 $(document).on("keypress", function(event) {
     var number = String.fromCharCode(event.keyCode).toLowerCase();
-      console.log("#: " + number);
+   //   console.log("#: " + number);
      
     if (event.keyCode >= 48 && event.keyCode <= 57) {
       if (bdayContainer[0].innerText.length < 4) {
@@ -82,9 +129,14 @@ $(document).on("keypress", function(event) {
 
 $("button").on("click", function(event) {
   $("#bday-container").hide();
-  $(".table").show();
+  $(".container").show();
   $("button").hide();
+
+ // displayVideos();
 });
+
+
+
 
  
      
