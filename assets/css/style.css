@@ -45,13 +45,31 @@ header {
 
 }
 
-#track-display {
-  background-color: #FFFFFF;
-  height: 500px;
-  width: 800px;
-  position: relative;
-  left: 330px;
-  top: 80px;
+ .panel-primary {
+  background: rgba(255, 255, 255, 0.3);
+  margin: 50px;
+  border-style: none;
 }
+
+.panel-primary>.panel-heading {
+  font-family: 'Nunito', sans-serif;
+  font-size: 70px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: #FFFFFF;
+  text-align: center;
+
+
+}
+
+.panel-title {
+  font-size: 70px;
+}
+
+.panel-body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  color: #333;
+} 
 
 

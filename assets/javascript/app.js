@@ -21,7 +21,7 @@ $("button").on("click", function(){
   console.log("year: " + year);
 
   var queryURL = "http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=" + year + 
-    "&api_key=319dee413845315791220a4cdf2ea8db&format=json&limit=200";
+    "&api_key=319dee413845315791220a4cdf2ea8db&format=json&limit=99";
     console.log("queryURL", queryURL);
 
   $.ajax({
@@ -35,26 +35,41 @@ $("button").on("click", function(){
       var counter = 0;
 
       while (counter <= 10) {
-        var randNumber = 
+        var randNumber = Math.floor(Math.random() * trackResults.length);
+        console.log(randNumber)
+        var trackName = trackResults[randNumber].name;
+        console.log("test" + trackName)
+        var artistName = trackResults[randNumber].artist.name;
 
+        if (artists[artistName]) {
+          continue;
+        } else {
+          artists[artistName] = true;
+          counter++;
 
-
-
-      }
-      console.log(trackResults);
-      for (i = 0; i < 11; i++) {
-
-
-      for (var i = 0; i < trackResults.length; i++){
-        var trackName = trackResults[i].name;
-        console.log("track " + trackName);
-
-        var trackArtist = trackResults[i].artist.name;
           $("#trackTable > tbody").append("<tr><td>" 
-            + trackName + "</td><td>" + trackArtist + "</td></tr>");
-      }
+            + trackName + "</td><td>" + artistName + "</td></tr>");
 
-    }
+        }
+
+
+
+
+      }
+    //   console.log(trackResults);
+    //   for (i = 0; i < 11; i++) {
+
+
+    //   for (var i = 0; i < trackResults.length; i++){
+    //     var trackName = trackResults[i].name;
+    //     console.log("track " + trackName);
+
+    //     var trackArtist = trackResults[i].artist.name;
+    //       $("#trackTable > tbody").append("<tr><td>" 
+    //         + trackName + "</td><td>" + trackArtist + "</td></tr>");
+    //   }
+
+    // }
   });
 
 });
