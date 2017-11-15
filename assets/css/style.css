@@ -28,7 +28,7 @@ header {
   font-family: 'Anton', sans-serif;
   font-size: 40px;
   position: relative;
-  background-color: #FAFA43;
+  background-color: #FFFFFF;
   color: #FA4372;
   top: 600px;
   left: 40%;
@@ -37,7 +37,7 @@ header {
 
 #bday-container {
   font-family: 'Anton', sans-serif;
-  font-size: 460px;
+  font-size: 400px;
   color: #FFFFFF;
   position: relative;
   text-align: center;
@@ -45,7 +45,7 @@ header {
 
 }
 
-.table {
+#track-display {
   background-color: #FFFFFF;
   height: 500px;
   width: 800px;
