@@ -6,10 +6,42 @@
 var bdayContainer = $("#bday-container");
 
 
-//FUNCTIONS
+//PROCESSES
 //======================================================
 //======================================================
 
+$("button").hide();
+$(".container").hide();
+
+//FUNCTION TO DISPLAY USER KEYPRESSES
+//======================================================
+$(document).on("keypress", function(event) {
+    var number = String.fromCharCode(event.keyCode).toLowerCase();
+   //   console.log("#: " + number);
+     
+    if (event.keyCode >= 48 && event.keyCode <= 57) {
+      if (bdayContainer[0].innerText.length < 4) {
+        bdayContainer.append(number);
+      }
+    }
+    if (bdayContainer[0].innerText.length > 3) {
+      $("header").hide();
+      $("button").show();
+    }
+
+});
+
+$("button").on("click", function(event) {
+  $("#bday-container").hide();
+  $(".container").show();
+  $("button").hide();
+
+ // displayVideos();
+});
+
+
+//CLICK BUTTON TO PRODUCE PLAYLIST
+//======================================================
 $("button").on("click", function(){
 
   var year = bdayContainer.text();
@@ -46,17 +78,9 @@ $("button").on("click", function(){
             + trackName + "</td><td>" + artistName + "</td></tr>");
 
         }
-        // $(document).ready(function() {
-
-        //   var search = "";
-
-        //   $("#submit").on("click", function(){
-        //     search =  $("#search").val();
-        //     displayVideos();
-        //     });
-        // });
       }
-        
+//CLICK TITLE PRODUCE YOUTUBE VIDEO RESULTS
+//======================================================
         $("td").on("click", function(){
 
           console.log("td")
@@ -94,83 +118,10 @@ $("button").on("click", function(){
              // search =  $("#search").val();
               //displayVideos();
         });
-
-
-          
-
-
-
-
       });
-
-
 });
 
- // var search = $(this).attr("data-name");
-
-  //var queryURL = "https://www.googleapis.com/youtube/v3/search?q=" + search + "&key=AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc";
-
-  //$.ajax({
-   // url: queryURL,
-  //  method: "GET"
-  // }).done(function(response){
-  //     console.log(response);
-  //     var results = response.items;
-  //     console.log(results);
-
-  //     for (var i = 0; i < response.items; i++){
-  //       var ytDiv = $("<div class='ytVideos'>");
-  //       var ytVideos = $("<iframe>");
-
-  //       ytVideos.attr("src", results[i].id.url);
-
-  //       ytDiv.append(ytVideos);
-
-  //       $(".videos").prepend(ytDiv);
-  //     }
-      
-  // });
-
-
-
-
-
-//MAIN PROCESSES
-//======================================================
-//======================================================
-
-$("button").hide();
-$(".container").hide();
-
-
-$(document).on("keypress", function(event) {
-    var number = String.fromCharCode(event.keyCode).toLowerCase();
-   //   console.log("#: " + number);
-     
-    if (event.keyCode >= 48 && event.keyCode <= 57) {
-      if (bdayContainer[0].innerText.length < 4) {
-        bdayContainer.append(number);
-      }
-    }
-    if (bdayContainer[0].innerText.length > 3) {
-      $("header").hide();
-      $("button").show();
-    }
-
-});
-
-$("button").on("click", function(event) {
-  $("#bday-container").hide();
-  $(".container").show();
-  $("button").hide();
-
- // displayVideos();
-});
-
-
-
-
-//CODE TO BE DISSECTED/MADE ORIGINAL
+//GRADIENT CODE
 //======================================================
 //======================================================
 
@@ -181,13 +132,6 @@ var colors = new Array(
   [71,200,255],
   [255,0,255],
   [255,251,33]);
-
-  //[62,35,255],
-  //[60,255,60],
-  //[255,35,98],
-  //[45,175,230],
-  //[255,0,255],
-  //[255,128,0]);
 
 var step = 0;
 //color table indices for: 
