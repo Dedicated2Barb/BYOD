@@ -1,114 +1,171 @@
- //API for Spotify
-
-//$(document).on("click", "lastDigitInput", function(){
-//  var type = $(this).data("type");
- // console.log("button type: " + type);
- // var queryURL = "format=json http://www.spotify.com/ns/music/1q=" +year+ "&api_key=c01b3208712e4328baa0c3087c684529&limit=10";
- // console.log("queryURL");
- // $.ajax({
- //   url: queryURL,method:"GET"
-//  }).done(function(response){
- //   console.log("search track"); 
-
-
-
 //GLOBAL VARIABLES
 //======================================================
 //======================================================
 
-var numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var bdayContainer = $("#bday-container");
 
-var userInput = [];
-//API KEY FOR YOUTUBE AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc
 
-var byod = [];
-//"B", "Y", "O", "D"
-//FUNCTIONS
+//PROCESSES
 //======================================================
 //======================================================
 
+$("button").hide();
+$(".container").hide();
 
-
-
-
-
-//MAIN PROCESSES
+//FUNCTION TO DISPLAY USER KEYPRESSES
 //======================================================
-//======================================================
-
-
 $(document).on("keypress", function(event) {
+    var number = String.fromCharCode(event.keyCode).toLowerCase();
+   //   console.log("#: " + number);
+     
+    if (event.keyCode >= 48 && event.keyCode <= 57) {
+      if (bdayContainer[0].innerText.length < 4) {
+        bdayContainer.append(number);
+      }
+    }
+    if (bdayContainer[0].innerText.length > 3) {
+      $("header").hide();
+      $("button").show();
+    }
 
-  var number = String.fromCharCode(event.keyCode).toLowerCase();
-    console.log("#: " + number);
-
-  var bdayContainer = $("#bday-container");
-   // for (var i = 0; i < byod; i++) {
-     // byod[i] = number;
-    //  console.log("change: " + byod[i]);
-      //if (event.keyCode >= 48 && event.keyCode <= 57) {
-       // if (bdayContainer[0].innerText.length < 4)  {
-       // bdayContainer.append(number);
-       // }
-
-      
- // }
 });
- 
-byod.push("B", "Y", "O", "D");
 
-      $("#bday-container").html(byod);
+$("button").on("click", function(event) {
+  $("#bday-container").hide();
+  $(".container").show();
+  $("button").hide();
+
+ // displayVideos();
+});
 
 
+//CLICK BUTTON TO PRODUCE PLAYLIST
+//======================================================
+$("button").on("click", function(){
+
+  var year = bdayContainer.text();
+  console.log("year: " + year);
+
+  var queryURL = "http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=" + year + 
+    "&api_key=319dee413845315791220a4cdf2ea8db&format=json&limit=99";
+    console.log("queryURL", queryURL);
+
+  $.ajax({
+      url: queryURL,
+      method:"GET"
+    }).done(function(response){
+      console.log(response)
+
+      var trackResults = response.tracks.track;
+      var artists = {};
+      var counter = 0;
+
+      while (counter <= 10) {
+        var randNumber = Math.floor(Math.random() * trackResults.length);
+        
+        var trackName = trackResults[randNumber].name;
+       
+        var artistName = trackResults[randNumber].artist.name;
+
+        if (artists[artistName]) {
+          continue;
+        } else {
+          artists[artistName] = true;
+          counter++;
+
+          $("#trackTable > tbody").append("<tr><td>" 
+            + trackName + "</td><td>" + artistName + "</td></tr>");
+
+        }
+      }
+//CLICK TITLE TO PRODUCE YOUTUBE VIDEO RESULTS
+//======================================================
+        $("td").on("click", function(){
+
+          console.log("td")
+          var song = trackName;
+          console.log("song: " + song)
 
 
-//CODE TO BE DISSECTED/MADE ORIGINAL
+          //function displayVideos(){
+
+
+              var key = "AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc";
+              $.ajax({
+                  method: 'GET',    
+                  url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + 
+                  song + "&key=" + key,
+                  data: {
+                      format: "json"
+                  },
+                  error: function() {
+                      $('#info').html('<p>An error has occurred</p>');
+                  },
+                  dataType: 'json',  
+              }).done(function(response){
+                  var results = response.items;
+                  console.log("video" + response);
+                  for (var i = 0; i < 3; i++){
+                      var video = $("<iframe>");
+                      video.addClass("video w100").attr("width","640").attr("height","360").attr("src","https://www.youtube.com/embed/"+response.items[i].id.videoId).attr("frameborder","0").attr("allowfullscreen");
+                      $("#results").append(video);
+                  };
+              });
+          //}
+
+         // $("#submit").on("click", function(){
+             // search =  $("#search").val();
+              //displayVideos();
+        });
+      });
+});
+
+//GRADIENT CODE
 //======================================================
 //======================================================
 
 var colors = new Array(
-  [62,35,255],
+  [0,140,255],
   [60,255,60],
   [255,35,98],
-  [45,175,230],
+  [71,200,255],
   [255,0,255],
-  [255,128,0]);
+  [255,251,33]);
 
 var step = 0;
 //color table indices for: 
-// current color left
-// next color left
-// current color right
-// next color right
+// current color top
+// next color top
+// current color bottom
+// next color bottom
 var colorIndices = [0,1,2,3];
 
 //transition speed
 var gradientSpeed = 0.005;
 
-function updateGradient()
-{
+function updateGradient() {
   
   if ( $===undefined ) return;
   
-var c0_0 = colors[colorIndices[0]];
-var c0_1 = colors[colorIndices[1]];
-var c1_0 = colors[colorIndices[2]];
-var c1_1 = colors[colorIndices[3]];
+  var c0_0 = colors[colorIndices[0]];
+  var c0_1 = colors[colorIndices[1]];
+  var c1_0 = colors[colorIndices[2]];
+  var c1_1 = colors[colorIndices[3]];
 
-var istep = 1 - step;
-var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
-var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
-var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
-var color1 = "rgb("+r1+","+g1+","+b1+")";
+  var istep = 1 - step;
+  var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
+  var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
+  var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
+  var color1 = "rgb("+r1+","+g1+","+b1+")";
 
-var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
-var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
-var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
-var color2 = "rgb("+r2+","+g2+","+b2+")";
+  var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
+  var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
+  var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
+  var color2 = "rgb("+r2+","+g2+","+b2+")";
 
  $('#gradient').css({
-   background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
-    background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
+  background: "-webkit-gradient(linear, center bottom, center top, from("+color1+"), to("+color2+"))"});//.css({
+    //background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
   
   step += gradientSpeed;
   if ( step >= 1 )
