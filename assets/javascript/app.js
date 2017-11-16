@@ -1,12 +1,7 @@
 
-
-
-
 //GLOBAL VARIABLES
 //======================================================
 //======================================================
-
-//API KEY FOR YOUTUBE AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc
 
 var bdayContainer = $("#bday-container");
 
@@ -36,9 +31,9 @@ $("button").on("click", function(){
 
       while (counter <= 10) {
         var randNumber = Math.floor(Math.random() * trackResults.length);
-        console.log(randNumber)
+        
         var trackName = trackResults[randNumber].name;
-        console.log("test" + trackName)
+       
         var artistName = trackResults[randNumber].artist.name;
 
         if (artists[artistName]) {
@@ -51,26 +46,63 @@ $("button").on("click", function(){
             + trackName + "</td><td>" + artistName + "</td></tr>");
 
         }
+        // $(document).ready(function() {
 
+        //   var search = "";
 
-
-
+        //   $("#submit").on("click", function(){
+        //     search =  $("#search").val();
+        //     displayVideos();
+        //     });
+        // });
       }
-    //   console.log(trackResults);
-    //   for (i = 0; i < 11; i++) {
+        
+        $("td").on("click", function(){
+
+          console.log("td")
+          var song = trackName;
+          console.log("song: " + song)
 
 
-    //   for (var i = 0; i < trackResults.length; i++){
-    //     var trackName = trackResults[i].name;
-    //     console.log("track " + trackName);
+          //function displayVideos(){
 
-    //     var trackArtist = trackResults[i].artist.name;
-    //       $("#trackTable > tbody").append("<tr><td>" 
-    //         + trackName + "</td><td>" + trackArtist + "</td></tr>");
-    //   }
 
-    // }
-  });
+              var key = "AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc";
+              $.ajax({
+                  method: 'GET',    
+                  url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + 
+                  song + "&key=" + key,
+                  data: {
+                      format: "json"
+                  },
+                  error: function() {
+                      $('#info').html('<p>An error has occurred</p>');
+                  },
+                  dataType: 'json',  
+              }).done(function(response){
+                  var results = response.items;
+                  console.log("video" + response);
+                  for (var i = 0; i < 3; i++){
+                      var video = $("<iframe>");
+                      video.addClass("video w100").attr("width","640").attr("height","360").attr("src","https://www.youtube.com/embed/"+response.items[i].id.videoId).attr("frameborder","0").attr("allowfullscreen");
+                      $("#results").append(video);
+                  };
+              });
+          //}
+
+         // $("#submit").on("click", function(){
+             // search =  $("#search").val();
+              //displayVideos();
+        });
+
+
+          
+
+
+
+
+      });
+
 
 });
 
@@ -135,11 +167,6 @@ $("button").on("click", function(event) {
  // displayVideos();
 });
 
-
-
-
- 
-     
 
 
 
