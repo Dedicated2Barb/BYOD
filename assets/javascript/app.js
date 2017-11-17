@@ -58,7 +58,7 @@ $("button").on("click", function(){
   var year = bdayContainer.text();
   console.log("year: " + year);
 
-  var queryURL = "http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=" + year + 
+  var queryURL = "https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=" + year + 
     "&api_key=319dee413845315791220a4cdf2ea8db&format=json&limit=99";
     console.log("queryURL", queryURL);
 
