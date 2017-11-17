@@ -14,6 +14,8 @@ $(".container").hide();
 $("#logoSM").hide();
 $("#backarrow").hide();
 $("#discoarrow").hide();
+$("#discolady").hide();
+
 
 //FUNCTION TO DISPLAY USER KEYPRESSES
 //======================================================
@@ -53,6 +55,12 @@ $("button").on("click", function(event) {
 
 $("#backarrow").on("click", function() {
  location.reload();
+});
+
+$("#discoarrow").on("click", function() {
+  $(".container").hide();
+  $("#discolady").show();
+
 });
 
 //CLICK BUTTON TO PRODUCE PLAYLIST
