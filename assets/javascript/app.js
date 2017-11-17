@@ -13,6 +13,7 @@ $("button").hide();
 $(".container").hide();
 $("#logoSM").hide();
 
+
 //FUNCTION TO DISPLAY USER KEYPRESSES
 //======================================================
 $(document).on("keypress", function(event) {
@@ -26,15 +27,15 @@ $(document).on("keypress", function(event) {
     }
     if (bdayContainer[0].innerText.length > 3) {
       $("button").show();
-      
     }
 
      if (bdayContainer[0].innerText.length > 0) {
      	$("#logo").hide();
      	$("header").hide();
      }
-
-
+      //$("header").hide();
+      //$("button").show();
+   // }
 });
 
 $("button").on("click", function(event) {
@@ -42,7 +43,6 @@ $("button").on("click", function(event) {
   $(".container").show();
   $("button").hide();
   $("#logoSM").show();
-
  // displayVideos();
 });
 

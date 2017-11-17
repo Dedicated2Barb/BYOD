@@ -34,7 +34,6 @@ header {
   border: none;
 }
 
-
 .btn:hover {
   background-color: transparent;
   border-style: solid;
@@ -42,7 +41,6 @@ header {
   border-color: #FFFFFF;
   color: #FFFFFF;
 }
-
 
 #bday-container {
   font-family: 'Anton', sans-serif;
@@ -104,12 +102,5 @@ th {
   width: 300px;
 }
 
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   color: #FFFFFF;
-   text-align: center;
-}
+
 
