@@ -21,6 +21,28 @@ header {
   top: 200px;
 }
 
+ #arrowpic {
+  width: 60px;
+  position: fixed;
+  left: 50px;
+  top: 100px;
+} 
+
+ #fwdarrowpic {
+  width: 60px;
+  position: fixed;
+  right: 50px;
+  top: 100px;
+}
+
+#discopic {
+  width: 450px;
+  position: relative;
+  margin: 50px;
+  left: 32%;
+
+
+} 
 
 .btn {
   height: 80px;
@@ -47,9 +69,10 @@ header {
   font-family: 'Anton', sans-serif;
   font-size: 400px;
   color: #FFFFFF;
-  position: fixed;
+  position: relative;
   top: 75px;
-  left: 340px;
+  display: block;
+  margin: 0 auto;
   text-align: center;
   line-height: 460px;
 }

@@ -12,6 +12,10 @@ var bdayContainer = $("#bday-container");
 $("button").hide();
 $(".container").hide();
 $("#logoSM").hide();
+$("#backarrow").hide();
+$("#discoarrow").hide();
+$("#discolady").hide();
+
 
 //FUNCTION TO DISPLAY USER KEYPRESSES
 //======================================================
@@ -36,9 +40,6 @@ $(document).on("keypress", function(event) {
      	$("#logo").hide();
      	$("header").hide();
      }
-      //$("header").hide();
-      //$("button").show();
-   // }
 });
 
 $("button").on("click", function(event) {
@@ -46,10 +47,21 @@ $("button").on("click", function(event) {
   $(".container").show();
   $("button").hide();
   $("#logoSM").show();
+  $("#backarrow").show();
+  $("#discoarrow").show();
 
  // displayVideos();
 });
 
+$("#backarrow").on("click", function() {
+ location.reload();
+});
+
+$("#discoarrow").on("click", function() {
+  $(".container").hide();
+  $("#discolady").show();
+
+});
 
 //CLICK BUTTON TO PRODUCE PLAYLIST
 //======================================================
@@ -99,7 +111,6 @@ $("button").on("click", function(){
           var song = this.childNodes[0].innerHTML;
           var artist = this.childNodes[1].innerHTML;
           $.scrollTo(".results", 800);
-          //function displayVideos(){
 
               var key = "AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc";
               $.ajax({
@@ -120,20 +131,12 @@ $("button").on("click", function(){
                       $(".results").append(video);
                   };
               });
-        //  }
-         // displayVideos();
         });
       });
 });
 
 
-//$('.prev-section').click(function(e){
-  //  e.preventDefault();
-   // var $this = $(this),
-      //  $prev = $this.parent().prev();
 
-  //  $prev.scrollTo(400, 'linear');
-//});
 
 //GRADIENT CODE
 //======================================================
