@@ -12,6 +12,7 @@ var bdayContainer = $("#bday-container");
 
 $("button").hide();
 $(".container").hide();
+$("#logoSM").hide();
 
 //FUNCTION TO DISPLAY USER KEYPRESSES
 //======================================================
@@ -28,6 +29,10 @@ $(document).on("keypress", function(event) {
       $("header").hide();
       $("button").show();
     }
+    if (bdayContainer[0].innerText.length > 0) {
+      $("#logo").hide();
+      $("header").hide();
+     }
 
 });
 
@@ -35,6 +40,7 @@ $("button").on("click", function(event) {
   $("#bday-container").hide();
   $(".container").show();
   $("button").hide();
+  $("#logoSM").show();
 
  // displayVideos();
 });
@@ -67,6 +73,7 @@ $("button").on("click", function(){
         var trackName = trackResults[randNumber].name;
        
         var artistName = trackResults[randNumber].artist.name;
+        var tName = trackResults.name;
 
         if (artists[artistName]) {
           continue;
@@ -81,45 +88,47 @@ $("button").on("click", function(){
       }
 //CLICK TITLE TO PRODUCE YOUTUBE VIDEO RESULTS
 //======================================================
-        $("td").on("click", function(){
+        $("tr").on("click", function(){
+          
 
-          console.log("td")
-          var song = trackName;
-          console.log("song: " + song)
-
-
+          var song = this.childNodes[0].innerHTML;
+          var artist = this.childNodes[1].innerHTML;
+          $.scrollTo(".results", 800);
           //function displayVideos(){
-
 
               var key = "AIzaSyCiwWWtLUbg2ByHGw8md5m4nl3guLFq6Xc";
               $.ajax({
                   method: 'GET',    
                   url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + 
-                  song + "&key=" + key,
+                  song + "-" + artist + "&key=" + key,
                   data: {
                       format: "json"
-                  },
-                  error: function() {
-                      $('#info').html('<p>An error has occurred</p>');
                   },
                   dataType: 'json',  
               }).done(function(response){
                   var results = response.items;
-                  console.log("video" + response);
+                  console.log(results);
+                  $(".results").empty();
                   for (var i = 0; i < 3; i++){
                       var video = $("<iframe>");
-                      video.addClass("video w100").attr("width","640").attr("height","360").attr("src","https://www.youtube.com/embed/"+response.items[i].id.videoId).attr("frameborder","0").attr("allowfullscreen");
-                      $("#results").append(video);
+                      video.addClass("video w100").attr("width","400").attr("height","300").css("padding","10px").css("border","1px").attr("src","https://www.youtube.com/embed/"+response.items[i].id.videoId).attr("frameborder","0").attr("allowfullscreen");
+                      $(".results").append(video);
                   };
               });
-          //}
-
-         // $("#submit").on("click", function(){
-             // search =  $("#search").val();
-              //displayVideos();
+        //  }
+         // displayVideos();
         });
       });
 });
+
+
+//$('.prev-section').click(function(e){
+  //  e.preventDefault();
+   // var $this = $(this),
+      //  $prev = $this.parent().prev();
+
+  //  $prev.scrollTo(400, 'linear');
+//});
 
 //GRADIENT CODE
 //======================================================

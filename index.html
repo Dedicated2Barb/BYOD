@@ -14,6 +14,7 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
+
 <link href="https://fonts.googleapis.com/css?family=Anton|Hind|Nunito" rel="stylesheet">
 </head>
 
@@ -21,11 +22,15 @@
   
   <div id="gradient">
 
+    <div id="logo">
+      <img src="assets/images/BYOD.png" alt="BYOD logo" id="logoLRG">
+      </div>
+
     <header><strong>please type your birth year to bring your own disco</strong></header> 
-    <button type="button" class="btn btn-primary btn-lg">click for playlist</button>
+    <button type="button" class="btn btn-primary btn-lg" id="basicFadeButton">click for playlist</button>
   <div id="bday-container"></div>
 
-
+  <a href="#bottom" id="top">
     <div class="container">
 
           <div class="row">
@@ -34,7 +39,7 @@
                 <!-- playlist -->
                       <div class="panel panel-primary">
                           <div class="panel-heading">
-                              <h3 class="panel-title"><strong>Your Disco!</strong></h3>
+                            <img src="assets/images/BYOD.png" alt="BYOD logo" id="logoSM">
                           </div>
                               <div class="panel-body">
                                   <table class="table table-hover" id='trackTable'>
@@ -54,15 +59,17 @@
                 </div>
             </div>
     </div>
+  </a>
 
-<div id="results"></div> 
+<div class="results"></div> 
 </div>
  
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+
 <script type="text/javascript" src=assets/javascript/app.js></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 
 </body>
 </html>
