@@ -104,3 +104,10 @@ img {
   padding-top: 200px;
 }
 
+#logoSM {
+  height: auto;
+  width: 100px;
+  left: 20px;
+  padding-top: 10px;
+}
+

@@ -11,6 +11,7 @@ var bdayContainer = $("#bday-container");
 
 $("button").hide();
 $(".container").hide();
+$("#logoSM").hide();
 
 //FUNCTION TO DISPLAY USER KEYPRESSES
 //======================================================
@@ -40,6 +41,7 @@ $("button").on("click", function(event) {
   $("#bday-container").hide();
   $(".container").show();
   $("button").hide();
+  $("#logoSM").show();
 
  // displayVideos();
 });
