@@ -18,22 +18,29 @@ header {
   color: #FFFFFF;
   position: relative;
   text-align: center;
-  top: 600px;
+  top: 200px;
 
 }
 
 .btn {
   height: 80px;
   width: 300px;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 40px;
   position: relative;
   background-color: #FFFFFF;
   color: #FA4372;
   top: 600px;
   left: 40%;
-  border-radius: 20px;
+  border: none;
 }
+
+
+.btn:hover {
+  background-color: #FA4372;
+  color: #FFFFFF;
+}
+
 
 #bday-container {
   font-family: 'Anton', sans-serif;
@@ -83,6 +90,6 @@ img {
   width: 700px;
   display: block;
   margin: auto;
-
+  padding-top: 200px;
 }
 
