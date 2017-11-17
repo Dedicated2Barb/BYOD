@@ -67,8 +67,6 @@ header {
   background: rgba(255, 255, 255, 0.5);
   border-color: #FFFFFF;
   text-align: center;
-
-
 }
 
 .panel-title {
@@ -102,4 +100,3 @@ th {
 #logoSM {
   width: 300px;
 }
-
