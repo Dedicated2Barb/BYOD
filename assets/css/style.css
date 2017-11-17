@@ -18,31 +18,39 @@ header {
   color: #FFFFFF;
   position: relative;
   text-align: center;
-  top: 600px;
-
+  top: 200px;
 }
 
 .btn {
   height: 80px;
   width: 300px;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 40px;
   position: relative;
-  background-color: #FFFFFF;
-  color: #FA4372;
+  background-color: transparent;
+  color: #FFFFFF;
   top: 600px;
   left: 40%;
-  border-radius: 20px;
+  border: none;
+}
+
+.btn:hover {
+  background-color: transparent;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 #bday-container {
   font-family: 'Anton', sans-serif;
   font-size: 400px;
   color: #FFFFFF;
-  position: relative;
+  position: fixed;
+  top: 75px;
+  left: 350px;
   text-align: center;
   line-height: 460px;
-
 }
 
  .panel-primary {
@@ -58,12 +66,11 @@ header {
   background: rgba(255, 255, 255, 0.5);
   border-color: #FFFFFF;
   text-align: center;
-
-
 }
 
 .panel-title {
-  font-size: 70px;
+  font-size: 60px;
+  color: #FFFFFF;
 }
 
 .panel-body {
@@ -72,10 +79,28 @@ header {
   color: #333;
 } 
 
+th {
+  color: #FFFFFF;
+  font-size: 30px;
+}
+
 #results {
   width: 650px;
   position: relative;
   left: 400px;
 }
+
+#logoLRG {
+  height: auto;
+  width: 700px;
+  display: block;
+  margin: auto;
+  padding-top: 200px;
+}
+
+#logoSM {
+  width: 300px;
+}
+
 
 

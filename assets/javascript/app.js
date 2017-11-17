@@ -1,4 +1,3 @@
-
 //GLOBAL VARIABLES
 //======================================================
 //======================================================
@@ -12,6 +11,8 @@ var bdayContainer = $("#bday-container");
 
 $("button").hide();
 $(".container").hide();
+$("#logoSM").hide();
+
 
 //FUNCTION TO DISPLAY USER KEYPRESSES
 //======================================================
@@ -25,17 +26,23 @@ $(document).on("keypress", function(event) {
       }
     }
     if (bdayContainer[0].innerText.length > 3) {
-      $("header").hide();
       $("button").show();
     }
 
+     if (bdayContainer[0].innerText.length > 0) {
+     	$("#logo").hide();
+     	$("header").hide();
+     }
+      //$("header").hide();
+      //$("button").show();
+   // }
 });
 
 $("button").on("click", function(event) {
   $("#bday-container").hide();
   $(".container").show();
   $("button").hide();
-
+  $("#logoSM").show();
  // displayVideos();
 });
 
