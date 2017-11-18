@@ -16,6 +16,8 @@ $("#backarrow").hide();
 $("#discoarrow").hide();
 $("#playlistarrow").hide();
 $("#discolady").hide();
+$(".future-development").hide();
+  $("#futurearrow").hide();
 
 
 //FUNCTION TO DISPLAY USER KEYPRESSES
@@ -67,6 +69,9 @@ $("#playlistarrow").on("click", function() {
  $(".container").show();
  $("#playlistarrow").hide();
  $("#backarrow").show();
+ $(".future-development").hide();
+ $("#futurearrow").hide();
+ $("#discoarrow").show();
 });
 
 //BUTTON CLICK - SHOW GIFS
@@ -74,6 +79,20 @@ $("#playlistarrow").on("click", function() {
 $("#discoarrow").on("click", function() {
   $(".container").hide();
   $("#discolady").show();
+  $("#backarrow").hide();
+  $("#playlistarrow").show();
+  $(".future-development").hide();
+  $("#discoarrow").hide();
+  $("#futurearrow").show();
+});
+
+//BUTTON CLICK - FUTURE DEVELOPMENT
+//======================================================
+$("#futurearrow").on("click", function() {
+  $("#discolady").hide();
+  $(".future-development").show();
+  $("#futurearrow").hide();
+  $("#discoarrow").show();
   $("#backarrow").hide();
   $("#playlistarrow").show();
 });
