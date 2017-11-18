@@ -5,7 +5,7 @@
 var bdayContainer = $("#bday-container");
 
 
-//PROCESSES
+//START 
 //======================================================
 //======================================================
 
@@ -14,6 +14,7 @@ $(".container").hide();
 $("#logoSM").hide();
 $("#backarrow").hide();
 $("#discoarrow").hide();
+$("#playlistarrow").hide();
 $("#discolady").hide();
 
 
@@ -41,6 +42,9 @@ $(document).on("keypress", function(event) {
      }
 });
 
+
+//BUTTON CLICK - SONG LIST RESULTS
+//======================================================
 $("button").on("click", function(event) {
   $("#bday-container").hide();
   $(".container").show();
@@ -50,17 +54,31 @@ $("button").on("click", function(event) {
   $("#discoarrow").show();
 });
 
+//BUTTON CLICK - RELOAD PAGE
+//======================================================
 $("#backarrow").on("click", function() {
  location.reload();
 });
 
+//BUTTON CLICK - RETURN TO PLAYLIST
+//======================================================
+$("#playlistarrow").on("click", function() {
+ $("#discolady").hide();
+ $(".container").show();
+ $("#playlistarrow").hide();
+ $("#backarrow").show();
+});
+
+//BUTTON CLICK - SHOW GIFS
+//======================================================
 $("#discoarrow").on("click", function() {
   $(".container").hide();
   $("#discolady").show();
-
+  $("#backarrow").hide();
+  $("#playlistarrow").show();
 });
 
-//CLICK BUTTON TO PRODUCE PLAYLIST
+//BUTTON CLICK - PRODUCE PLAYLIST
 //======================================================
 $("button").on("click", function(){
 
@@ -100,7 +118,7 @@ $("button").on("click", function(){
 
         }
       }
-//CLICK TITLE TO PRODUCE YOUTUBE VIDEO RESULTS
+//TITLE CLICK - PRODUCE YOUTUBE VIDEO RESULTS
 //======================================================
         $("tr").on("click", function(){
           
@@ -132,9 +150,6 @@ $("button").on("click", function(){
       });
 });
 
-
-
-
 //GRADIENT CODE
 //======================================================
 //======================================================
@@ -147,14 +162,14 @@ var colors = new Array(
   [255,0,255],
   [255,251,33]);
 
-var step = 0;
+var y = 0;
 
-//color table indices for: 
+//index for: 
 // current color top
 // next color top
 // current color bottom
 // next color bottom
-var colorIndices = [0,1,2,3];
+var positions = [0,1,2,3];
 
 //transition speed
 var gradientSpeed = 0.005;
@@ -163,38 +178,37 @@ function updateGradient() {
   
   if ( $===undefined ) return;
   
-  var currTop = colors[colorIndices[0]];
-  var nexTop = colors[colorIndices[1]];
-  var currBottom = colors[colorIndices[2]];
-  var nextBottom = colors[colorIndices[3]];
+  var currTop = colors[positions[0]];
+  var nexTop = colors[positions[1]];
+  var currBottom = colors[positions[2]];
+  var nextBottom = colors[positions[3]];
 
-  var istep = 1 - step;
-  var r1 = Math.round(istep * currTop[0] + step * nexTop[0]);
-  var g1 = Math.round(istep * currTop[1] + step * nexTop[1]);
-  var b1 = Math.round(istep * currTop[2] + step * nexTop[2]);
+  var x = 1 - y;
+  var r1 = Math.round(x * currTop[0] + y * nexTop[0]);
+  var g1 = Math.round(x * currTop[1] + y * nexTop[1]);
+  var b1 = Math.round(x * currTop[2] + y * nexTop[2]);
   var color1 = "rgb("+r1+","+g1+","+b1+")";
 
-  var r2 = Math.round(istep * currBottom[0] + step * nextBottom[0]);
-  var g2 = Math.round(istep * currBottom[1] + step * nextBottom[1]);
-  var b2 = Math.round(istep * currBottom[2] + step * nextBottom[2]);
+  var r2 = Math.round(x * currBottom[0] + y * nextBottom[0]);
+  var g2 = Math.round(x * currBottom[1] + y * nextBottom[1]);
+  var b2 = Math.round(x * currBottom[2] + y * nextBottom[2]);
   var color2 = "rgb("+r2+","+g2+","+b2+")";
 
  $('#gradient').css({
-  background: "-webkit-gradient(linear, center bottom, center top, from("+color1+"), to("+color2+"))"}).css({
-    background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
+  background: "-webkit-gradient(linear, center bottom, center top, from("+color1+"), to("+color2+"))"});//.css({
+    //background: "-moz-linear-gradient(top, "+color1+" 0%, "+color2+" 100%)"});
   
-  step += gradientSpeed;
-  if ( step >= 1 )
+  y += gradientSpeed;
+  if ( y >= 1 )
   {
-    step %= 1;
-    colorIndices[0] = colorIndices[1];
-    colorIndices[2] = colorIndices[3];
+    y %= 1;
+    positions[0] = positions[1];
+    positions[2] = positions[3];
     
     //pick two new target color indices
     //do not pick the same as the current one
-    colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
-    colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
-    
+    positions[1] = ( positions[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+    positions[3] = ( positions[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length; 
   }
 }
 
